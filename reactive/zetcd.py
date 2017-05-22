@@ -10,13 +10,18 @@ def setup_zk(zk):
     zk.send_connection(2181, 2181)
 
 
-@when('etcd.available')
-def setup_etcd(etcd):
+@when('etcd.available', 'etcd.tls.available')
+def setup_etcd(etcd, *args):
     # TODO: write cert files if TLS enabled
+    etcd.save_client_credentials(
+        "/srv/zetcd/client.key",
+        "/srv/zetcd/client.pem",
+        "/srv/zetcd/ca.pem",
+    )
     render(source="zetcd.service",
         target='/etc/systemd/system/zetcd.service',
         owner='root',
-        mode=0o755,
+        perms=0o755,
         context={
             'zk_port': 2181,
             'etcd_endpoint': etcd.connection_string(),

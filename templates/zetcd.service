@@ -4,7 +4,7 @@ After=network.target
 Requires=network.target
 
 [Service]
-ExecStart=/snap/bin/zetcd --zkaddr 0.0.0.0:2181 --endpoints {{ etcd_endpoints }}
+ExecStart=/snap/bin/zetcd --zkaddr 0.0.0.0:2181 --endpoints {{ etcd_endpoints }} --certfile /srv/zetcd/client.pem --keyfile /srv/zetcd/client.key --cafile /srv/zetcd/ca.pem
 Restart=always
 RestartSec=1
 Type=simple
