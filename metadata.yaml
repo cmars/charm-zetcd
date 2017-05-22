@@ -1,0 +1,24 @@
+name: zetcd
+summary: <Fill in summary here>
+maintainer: c <c@zeugmatic>
+description: |
+  <Multi-line description here>
+tags:
+  # Replace "misc" with one or more whitelisted tags from this list:
+  # https://jujucharms.com/docs/stable/authors-charm-metadata
+  - misc
+subordinate: false
+provides:
+  zookeeper:
+    interface: zookeeper
+requires:
+  etcd:
+    interface: etcd
+#resources:
+#  zetcd:
+#    type: file
+#    filename: zetcd.snap
+#    description: zetcd snap
+series:
+  - xenial
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=zetcd service
+After=network.target
+Requires=network.target
+
+[Service]
+ExecStart=/snap/bin/zetcd --zkaddr 0.0.0.0:2181 --endpoints {{ etcd_endpoints }}
+Restart=always
+RestartSec=1
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

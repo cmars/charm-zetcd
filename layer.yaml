@@ -1,0 +1,17 @@
+includes:
+ - 'layer:basic'
+ - 'layer:snap'
+ - 'interface:zookeeper'
+ - 'interface:etcd'
+options:
+  snap:
+    zetcd:
+      channel: edge
+ignore:
+  - builds
+  - deps
+  - tests
+  - trusty
+  - xenial
+  - .*.swp
+
